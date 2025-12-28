@@ -7,6 +7,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import java.io.Serializable;
+import java.security.SecureRandom;
 
 @NamedQuery(name= "User.findByEmailId",query="select u from User u where u.email=:email")
 @NamedQuery(name="User.getAllUser",query="select new com.inn.cafe.wrapper.UserWrapper(u.id,u.name,u.email,u.contactNumber,u.status) from User u where u.role='user'")
@@ -45,6 +46,19 @@ public class User implements Serializable {
 
     @Column(name="role")
     private String role;
+
+    public static class RandomValueStringGenerator {
+        private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        private static final SecureRandom RANDOM = new SecureRandom();
+
+        public static String generate(int length) {
+            StringBuilder sb = new StringBuilder(length);
+            for (int i = 0; i < length; i++) {
+                sb.append(CHARACTERS.charAt(RANDOM.nextInt(CHARACTERS.length())));
+            }
+            return sb.toString();
+        }
+    }
 
 
 }

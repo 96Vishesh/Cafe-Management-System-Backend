@@ -56,6 +56,12 @@ public class BillServiceImpl implements BillService {
                 String data="Name: "+requestMap.get("name")+"\n"+"Contact Number: "+requestMap.get("contactNumber")
                         +"\n"+"Email: "+requestMap.get("email")+"\n"+"Payment Method: "+requestMap.get("paymentMethod");
 
+                // Ensure the directory exists
+                File directory = new File(CafeConstants.STORE_LOCATION);
+                if (!directory.exists()) {
+                    directory.mkdirs();
+                }
+
                 Document document = new Document();
                 PdfWriter.getInstance(document, new FileOutputStream(CafeConstants.STORE_LOCATION+"\\"+fileName+".pdf"));
 

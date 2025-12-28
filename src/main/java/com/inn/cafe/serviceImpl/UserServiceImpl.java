@@ -79,10 +79,10 @@ public class UserServiceImpl implements UserService {
      */
 
 
-    private boolean validateSignUp(Map<String, String> requestMap) {
-        return requestMap.containsKey("name") && requestMap.containsKey("contactNumber")
-                && requestMap.containsKey("email") && requestMap.containsKey("password");
-    }
+        private boolean validateSignUp(Map<String, String> requestMap) {
+            return requestMap.containsKey("name") && requestMap.containsKey("contactNumber")
+                    && requestMap.containsKey("email") && requestMap.containsKey("password");
+        }
 
     private User getUserFromMap(Map<String, String> requestMap) {
         User user = new User();
@@ -179,8 +179,6 @@ public class UserServiceImpl implements UserService {
     public ResponseEntity<String> checkToken() {
 
         return CafeUtils.getResponseEntity("true", HttpStatus.OK);
-
-
 
     }
 

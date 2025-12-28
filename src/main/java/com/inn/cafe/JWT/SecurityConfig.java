@@ -19,9 +19,6 @@ import com.inn.cafe.JWT.CustomerUsersDetailsService;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
-
-
     public final CustomerUsersDetailsService customerUsersDetailsService;
     private final JwtFilter jwtFilter; // Constructor-based injection
 
